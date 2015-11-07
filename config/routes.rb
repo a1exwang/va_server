@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'resources/:count' => 'resources#index'
+  get 'resources/:count/after/:after' => 'resources#index'
   post 'resources/:id/remark' => 'resources#remark'
 
   # The priority is based upon order of creation: first created -> highest priority.

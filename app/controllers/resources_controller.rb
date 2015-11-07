@@ -1,7 +1,11 @@
 class ResourcesController < ApplicationController
-  # GET /resources/count.json
+  # GET /resources/10.json
+  # GET /resources/10/after/1.json
   def index
     @resources = Resource.where(rated: 'unrated').limit(params[:count])
+    if params[:after]
+      @resources.where('id > ?', params[:after])
+    end
   end
 
   # POST /resources/1/remark.json?remark={"description":"good", "mark": "10"}
