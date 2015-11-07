@@ -4,13 +4,13 @@ class ResourcesController < ApplicationController
     @resources = Resource.where(rated: 'unrated').limit(params[:count])
   end
 
-  # POST /resources/1/remark/mark.json?remark={"description":"123"}
+  # POST /resources/1/remark.json?remark={"description":"good", "mark": "10"}
   def remark
     json = JSON.parse(params[:remark])
 
     r = Resource.find(params[:id])
     r.rated = 'rated'
-    r.mark = params[:mark]
+    r.mark = json['mark']
     r.description = json['description']
     r.save
     render json: { status: 'success' }
