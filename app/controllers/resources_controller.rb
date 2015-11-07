@@ -4,7 +4,7 @@ class ResourcesController < ApplicationController
   def index
     @resources = Resource.where(rated: 'unrated').limit(params[:count])
     if params[:after]
-      @resources.where('id > ?', params[:after])
+      @resources = @resources.where('id > ?', params[:after])
     end
   end
 
