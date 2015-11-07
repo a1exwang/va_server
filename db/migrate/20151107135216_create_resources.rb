@@ -4,6 +4,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :designation
       t.string :mark
       t.string :path
+      t.text :description
       t.string :rated, null: false, default: 'unrated'
 
       t.timestamps null: false
